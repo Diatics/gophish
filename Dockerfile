@@ -16,6 +16,13 @@ WORKDIR /go/src/github.com/gophish/gophish
 COPY . .
 RUN go get -v && go build -v
 
+FROM ubuntu:trusty
+RUN sudo apt-get -y update
+RUN sudo apt-get -y upgrade
+RUN sudo apt-get install -y sqlite3 libsqlite3-dev
+RUN mkdir /db
+RUN /usr/bin/sqlite3 /db/test.db
+CMD /bin/bash
 
 # Runtime container
 FROM debian:stable-slim
@@ -23,7 +30,7 @@ FROM debian:stable-slim
 RUN useradd -m -d /opt/gophish -s /bin/bash app
 
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y jq libcap2-bin ca-certificates sqlite3 && \
+	apt-get install --no-install-recommends -y jq libcap2-bin ca-certificates && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
