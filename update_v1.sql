@@ -1,4 +1,4 @@
-INSERT INTO `smtp` VALUES (2,1,'SMTP','Phishup SMTP','eposta.anadolusigortatest.com:25','','','info@phishup.co','2024-02-01 10:47:06',1);
+INSERT INTO `smtp` VALUES (2,1,'SMTP','Phishup SMTP','askwexcappt1.anadolusigortatest.info:25','','','info@phishup.co','2024-02-01 10:47:06',1);
 INSERT INTO `group_targets` VALUES (5,1),(5,2),(5,3),(5,4),(5,6);
 INSERT INTO `groups` VALUES (5,1,'Test Group Phishup','2024-03-21 10:32:18');
 INSERT INTO `targets` VALUES (1,'Test','Phishup','pishuptest@anadolusigortatest.info',''),(2,'Sinerji','Yazisma','sinerjitestyazisma@anadolusigortatest.info',''),(3,'Asos','Test','asos_ay_kapama_test@anadolusigortatest.info',''),(4,'Muhasebe','Test','muhasebetest@anadolusigortatest.info',''),(5,'Journal','Test','pishupjournal@anadolusigortatest.info',''),(6,'Test2','Phishup','pishuptest2@anadolusigortatest.info','');
