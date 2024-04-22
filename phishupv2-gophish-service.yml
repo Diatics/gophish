@@ -25,23 +25,28 @@ spec:
           image: phishupacr.azurecr.io/phishupv2-gophish-service:latest
           name: phishupv2-gophish-service
           ports:
-            - containerPort: 3015
+            - containerPort: 3333
+            - containerPort: 80
           resources: {}
       hostname: phishupv2-gophish-service
       restartPolicy: Always
 status: {}
 ---
 apiVersion: v1
-kind: Service # ServiceDiscoryde Çıkacak kısma gireceğini belirtiyoruz
+kind: Service
 metadata:
   creationTimestamp: null
   labels:
     app: phishupv2-gophish-service
   name: phishupv2-gophish-service
-spec: # Hangi workload olacağını belirliyoruz
+spec:
   type: LoadBalancer
   ports:
-    - name: "3015"
-      port: 3015
-  selector: 
+    - name: "admin"
+      port: 3333
+      targetPort: 3333
+    - name: "phish"
+      port: 80
+      targetPort: 80
+  selector:
     app: phishupv2-gophish-service
