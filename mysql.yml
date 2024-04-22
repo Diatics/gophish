@@ -16,7 +16,7 @@ spec:
       - name: mysql
         image: mysql:latest  # Kullanmak istediğiniz MySQL imajını belirtin
         env:
-        - name: root
-          value: dia
+        - name: MYSQL_ROOT_PASSWORD  # MySQL root parolasını burada belirtin
+          value: "dia"  # Güçlü bir parola belirleyin
         ports:
         - containerPort: 3306  # MySQL portu
