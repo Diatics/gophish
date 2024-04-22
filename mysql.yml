@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1  # İstediğiniz sayıda replica belirleyebilirsiniz
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest  # Kullanmak istediğiniz MySQL imajını belirtin
+        env:
+        - name: root
+          value: dia
+        ports:
+        - containerPort: 3306  # MySQL portu
