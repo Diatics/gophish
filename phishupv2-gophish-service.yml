@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phishupv2-gophish-service
+  name: phishupv2-gophish-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phishupv2-gophish-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phishupv2-gophish-service
+    spec:
+      containers:
+        - env:
+          - name: ENV
+            value: "PROD"
+        
+          image: phishupacr.azurecr.io/phishupv2-gophish-service:latest
+          name: phishupv2-gophish-service
+          ports:
+            - containerPort: 3015
+          resources: {}
+      hostname: phishupv2-gophish-service
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service # ServiceDiscoryde Çıkacak kısma gireceğini belirtiyoruz
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phishupv2-gophish-service
+  name: phishupv2-gophish-service
+spec: # Hangi workload olacağını belirliyoruz
+  type: LoadBalancer
+  ports:
+    - name: "3015"
+      port: 3015
+  selector: 
+    app: phishupv2-cache-service
