@@ -44,4 +44,4 @@ spec: # Hangi workload olacağını belirliyoruz
     - name: "3015"
       port: 3015
   selector: 
-    app: phishupv2-cache-service
+    app: phishupv2-gophish-service
