@@ -12,8 +12,8 @@
 			"cert_path": "gophish.crt",
 			"key_path": "gophish.key"
 	},
-	"db_name": "mysql",
-	"db_path": "root:dia@(172.211.169.32:3306)/gophish?charset=utf8&parseTime=True&loc=UTC",
+	"db_name": "sqlite3",
+	"db_path": "gophish.db",
 	"migrations_prefix": "db/db_",
 	"contact_address": "",
 	"logging": {
