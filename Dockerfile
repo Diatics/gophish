@@ -36,6 +36,9 @@ COPY --from=build-js /build/static/css/dist/ ./static/css/dist/
 COPY --from=build-golang /go/src/github.com/gophish/gophish/config.json ./
 RUN chown app. config.json
 
+RUN chmod +x /opt/gophish/docker/run.sh
+RUN sed -i 's/\r$//' /opt/gophish/docker/run.sh
+
 RUN setcap 'cap_net_bind_service=+ep' /opt/gophish/gophish
 
 USER app
@@ -44,4 +47,4 @@ RUN touch config.json.tmp
 
 EXPOSE 3015 3306 3333 8080 8443 80 
 
-CMD ["./docker/run.sh"]
+CMD ["/bin/bash","./docker/run.sh"]

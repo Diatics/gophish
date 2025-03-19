@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:latest  # Kullanmak istediğiniz MySQL imajını belirtin
+        image: mysql:8.3.0  # Kullanmak istediğiniz MySQL imajını belirtin
         env:
         - name: MYSQL_ROOT_PASSWORD  # MySQL root parolasını burada belirtin
           value: "dia"  # Güçlü bir parola belirleyin
