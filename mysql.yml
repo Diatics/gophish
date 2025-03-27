@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mysql
 spec:
-  replicas: 1  # İstediğiniz sayıda replica belirleyebilirsiniz
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
@@ -14,9 +14,15 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:latest  # Kullanmak istediğiniz MySQL imajını belirtin
+        image: mysql:latest
         env:
-        - name: MYSQL_ROOT_PASSWORD  # MySQL root parolasını burada belirtin
-          value: "dia"  # Güçlü bir parola belirleyin
+        - name: MYSQL_ROOT_PASSWORD
+          value: "dia"
         ports:
-        - containerPort: 3306  # MySQL portu
+        - containerPort: 3306
+        command: ["/bin/sh", "-c"]
+        args:
+          - >
+            echo "[mysqld]
+            sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" > /etc/mysql/my.cnf &&
+            exec docker-entrypoint.sh mysqld
