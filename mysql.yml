@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mysql
 spec:
-  replicas: 1
+  replicas: 1  # İstediğiniz sayıda replica belirleyebilirsiniz
   selector:
     matchLabels:
       app: mysql
@@ -14,17 +14,9 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:7.4
+        image: mysql:latest  # Kullanmak istediğiniz MySQL imajını belirtin
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: "dia"  # Root parolasını belirleyin
+        - name: MYSQL_ROOT_PASSWORD  # MySQL root parolasını burada belirtin
+          value: "dia"  # Güçlü bir parola belirleyin
         ports:
-        - containerPort: 3306
-        volumeMounts:
-        - name: mysql-config-volume
-          mountPath: /etc/mysql/my.cnf
-          subPath: my.cnf
-      volumes:
-      - name: mysql-config-volume
-        configMap:
-          name: mysql-config
+        - containerPort: 3306  # MySQL portu
