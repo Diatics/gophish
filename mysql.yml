@@ -38,5 +38,6 @@ spec:
     app: mysql
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
+      port: 3306           # Kendi içindeki port
+      targetPort: 3306      # Konteynerdeki port
+  type: LoadBalancer      # LoadBalancer türüyle dışa açılıyor
